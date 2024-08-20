@@ -1,0 +1,78 @@
+// Standard Command 0+following
+0A0I : Triger 1 on, Busy 1 on
+
+// Monitor command 1+following
+1A   : Monitor 1 = Trigger 1
+
+// Monitor command 2+following
+2Z   : Monitor 2 = OR of veto
+
+// Read status
+@@   : Read configuration
+@0   : Read Busy status
+
+// Trigger on
+A Trigger 1 on
+B Trigger 2 on
+C Trigger 3 on
+D Trigger 4 on
+E Trigger 5 on
+F Trigger 6 on
+G Trigger 7 on
+H Trigger 8 on
+
+// Trigger off
+a Trigger 1 off
+b Trigger 2 off
+c Trigger 3 off
+d Trigger 4 off
+e Trigger 5 off
+f Trigger 6 off
+g Trigger 7 off
+h Trigger 8 off
+
+// Busy on
+I Busy 1 on
+J Busy 1 on
+K Busy 1 on
+L Busy 1 on
+M Busy 1 on
+N Busy 1 on
+O Busy 1 on
+P Busy 1 on
+Q Busy 1 on
+R Busy 1 on
+S Busy 1 on
+T Busy 1 on
+U Busy 1 on
+V Busy 1 on
+W Busy 1 on
+X Busy 1 on
+
+// Busy off
+i Busy 1 on
+j Busy 1 on
+k Busy 1 on
+l Busy 1 on
+m Busy 1 on
+n Busy 1 on
+o Busy 1 on
+p Busy 1 on
+q Busy 1 on
+r Busy 1 on
+s Busy 1 on
+t Busy 1 on
+u Busy 1 on
+v Busy 1 on
+w Busy 1 on
+x Busy 1 on
+
+// only for  monitor
+Z Veto OR
+Y Trigger OR
+
+// for control
+Z DAQ start
+z DAQ stop
+Y Test LED on
+y Test LED off

@@ -1,0 +1,18 @@
+/* Header for REPIC RPV-130 I/O Int. Reg. */
+
+#define RPV130_LATCH1     0x0   /* READ INPUT WITH FIN1 LATCH */
+#define RPV130_LATCH2     0x2   /* READ INPUT WITH FIN2 LATCH */
+#define RPV130_RSFF       0x4   /* READ INPUT WITH INNER CLOCK LATCH */
+#define RPV130_THROUGH    0x6   /* READ INPUT WITH NO LATCH */
+#define RPV130_PULSE      0x8   /* WRITE OUTPUT (PULSE MODE) */
+#define RPV130_LEVEL      0xa   /* WRITE OUTPUT (LEVEL MODE) */
+#define RPV130_CTL1       0xc
+#define RPV130_CTL2       0xe
+
+#define RPV130_BUSY3      0x80
+#define RPV130_ENABLE3    0x40
+#define RPV130_BUSY1OR2   0x20
+#define RPV130_ENABLE1OR2 0x10
+#define RPV130_MASK1OR2   0x08
+#define RPV130_CLEAR1OR2  0x02
+#define RPV130_CLEAR3     0x01

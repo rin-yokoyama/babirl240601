@@ -1,0 +1,12 @@
+[Unit]
+Description=babian babirl online analysis front-end
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/babirl/bin/babian
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target

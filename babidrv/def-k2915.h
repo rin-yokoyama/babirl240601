@@ -1,0 +1,32 @@
+#define init_register          k2915_init_register          
+#define check_done             k2915_check_done             
+#define check_emp_fifo         k2915_check_emp_fifo         
+#define check_full_fifo        k2915_check_full_fifo        
+#define check_lam              k2915_check_lam              
+#define read_lam               k2915_read_lam               
+#define control                k2915_control                
+#define read16                 k2915_read16                 
+#define read24                 k2915_read24                 
+#define write16                k2915_write16                
+#define write24                k2915_write24                
+#define block_read16           k2915_block_read16           
+#define block_read24           k2915_block_read24           
+#define dma_block_read16       k2915_dma_block_read16       
+#define dma_block_read24       k2915_dma_block_read24       
+#define crate_reset            k2915_crate_reset            
+#define rfs_enable_interrupt   k2915_rfs_enable_interrupt   
+#define rfs_disable_interrupt  k2915_rfs_disable_interrupt  
+#define pci_enable_interrupt   k2915_pci_enable_interrupt   
+#define pci_clear_interrupt    k2915_pci_clear_interrupt    
+#define crate_enable_lam       k2915_crate_enable_lam       
+#define crate_disable_lam      k2915_crate_disable_lam      
+#define crate_define_lam       k2915_crate_define_lam
+#define crate_z                k2915_crate_z                
+#define crate_c                k2915_crate_c                
+#define crate_seti             k2915_crate_seti             
+#define crate_deli             k2915_crate_deli             
+#define get_csrdata            k2915_get_csrdata            
+#define get_bmcsdata           k2915_get_bmcsdata
+#ifdef CAMACINT
+#define get_irq                k2915_get_irq
+#endif

@@ -1,0 +1,709 @@
+events: Hits
+
+fl=(1) /usr/src/debug////////glibc-2.17-c758a686/io/../sysdeps/unix/syscall-template.S
+fn=??
+81 2
+
+fl=(2) /usr/src/debug////////glibc-2.17-c758a686/misc/../sysdeps/unix/syscall-template.S
+fn=??
+81 9
+
+fl=(3) /usr/src/debug////////glibc-2.17-c758a686/nptl/../nptl/sysdeps/unix/sysv/linux/x86_64/lowlevellock.S
+fn=??
+133 12
+
+fl=(3)
+fn=??
+135 35
+
+fl=(3)
+fn=??
+138 1
+
+fl=(3)
+fn=??
+371 21
+
+fl=(4) /usr/src/debug////////glibc-2.17-c758a686/nptl/../sysdeps/unix/syscall-template.S
+fn=??
+81 2
+
+fl=(5) /usr/src/debug////////glibc-2.17-c758a686/posix/../sysdeps/unix/syscall-template.S
+fn=??
+81 1
+
+fl=(6) /usr/src/debug////////glibc-2.17-c758a686/string/../sysdeps/x86_64/memcpy.S
+fn=??
+127 1
+
+fl=(7) /usr/src/debug////////glibc-2.17-c758a686/string/../sysdeps/x86_64/memset.S
+fn=??
+98 17
+
+fl=(7)
+fn=??
+99 1
+
+fl=(8) /usr/src/debug////////glibc-2.17-c758a686/string/../sysdeps/x86_64/multiarch/memcpy-ssse3-back.S
+fn=??
+538 1
+
+fl=(8)
+fn=??
+554 1
+
+fl=(8)
+fn=??
+1690 1
+
+fl=(8)
+fn=??
+2198 1
+
+fl=(9) /usr/src/debug/glibc-2.17-c758a686/csu/../csu/libc-start.c
+fn=(1) __libc_start_main
+cfl=??
+cfn=(2) main
+calls=5 0
+266 5
+
+fl=(10) /usr/src/debug/glibc-2.17-c758a686/inet/../nss/getXXbyYY.c
+fn=(3) gethostbyname
+cfl=(11) /usr/src/debug/glibc-2.17-c758a686/inet/../nss/getXXbyYY_r.c
+cfn=(4) __gethostbyname_r
+calls=5 316
+134 5
+
+fl=(11)
+fn=(4)
+cfl=(12) /usr/src/debug/glibc-2.17-c758a686/nss/nss_files/files-hosts.c
+cfn=(5) _nss_files_gethostbyname_r
+calls=5 363
+316 5
+
+fl=(13) /usr/src/debug/glibc-2.17-c758a686/libio/filedoalloc.c
+fn=(6) __GI__IO_file_doallocate
+cfl=(14) /usr/src/debug/glibc-2.17-c758a686/misc/../sysdeps/unix/sysv/linux/wordsize-64/mmap.c
+cfn=(7) __mmap
+calls=1 36
+127 1
+
+fl=(15) /usr/src/debug/glibc-2.17-c758a686/libio/fileops.c
+fn=(8) _IO_new_file_close_it
+cfl=(16) /usr/src/debug/glibc-2.17-c758a686/libio/genops.c
+cfn=(9) __GI__IO_setb
+calls=1 383
+192 1
+
+fl=(15)
+fn=(10) _IO_file_open
+cfl=(1)
+cfn=??
+calls=1 81
+225 1
+
+fl=(15)
+fn=(11) _IO_new_file_underflow
+cfl=(16)
+cfn=(12) __GI__IO_doallocbuf
+calls=1 399
+557 1
+
+fl=(15)
+fn=(11)
+cfl=(15)
+cfn=(13) __GI__IO_file_read
+calls=1 1210
+593 1
+
+fl=(15)
+fn=(13)
+cfl=(1)
+cfn=??
+calls=1 81
+1210 1
+
+fl=(16)
+fn=(9)
+cfl=(2)
+cfn=??
+calls=1 81
+383 1
+
+fl=(16)
+fn=(12)
+cfl=(13)
+cfn=(6)
+calls=1 127
+399 1
+
+fl=(16)
+fn=(14) __GI__IO_default_uflow
+cfl=(15)
+cfn=(11)
+calls=1 557
+414 1
+
+fl=(16)
+fn=(14)
+cfl=(15)
+cfn=(11)
+calls=1 593
+414 1
+
+fl=(17) /usr/src/debug/glibc-2.17-c758a686/libio/iofclose.c
+fn=(15) _IO_new_fclose
+cfl=(15)
+cfn=(8)
+calls=1 192
+58 1
+
+fl=(18) /usr/src/debug/glibc-2.17-c758a686/libio/iofgets_u.c
+fn=(16) __GI___fgets_unlocked
+cfl=(19) /usr/src/debug/glibc-2.17-c758a686/libio/iogetline.c
+cfn=(17) __GI__IO_getline_info
+calls=2 60
+52 2
+
+fl=(18)
+fn=(16)
+cfl=(19)
+cfn=(17)
+calls=1 96
+52 1
+
+fl=(20) /usr/src/debug/glibc-2.17-c758a686/libio/iofopen.c
+fn=(18) __fopen_internal
+cfl=(15)
+cfn=(10)
+calls=1 225
+86 1
+
+fl=(19)
+fn=(17)
+cfl=(16)
+cfn=(14)
+calls=2 414
+60 2
+
+fl=(19)
+fn=(17)
+cfl=(6)
+cfn=??
+calls=1 127
+96 1
+
+fl=(21) /usr/src/debug/glibc-2.17-c758a686/malloc/arena.c
+fn=(19) grow_heap
+cfl=(2)
+cfn=??
+calls=5 81
+589 5
+
+fl=(21)
+fn=(20) shrink_heap
+cfl=(2)
+cfn=??
+calls=2 81
+621 2
+
+fl=(22) /usr/src/debug/glibc-2.17-c758a686/malloc/malloc.c
+fn=(21) sysmalloc
+2738 3
+
+fl=(22)
+fn=(22) __GI___libc_malloc
+2894 1
+
+fl=(22)
+fn=(22)
+2903 2
+
+fl=(22)
+fn=(22)
+cfl=(22)
+cfn=(23) _int_malloc
+calls=8 3803
+2905 8
+
+fl=(22)
+fn=(23)
+cfl=(21)
+cfn=(19)
+calls=5 589
+3803 5
+
+fl=(22)
+fn=(23)
+cfl=(22)
+cfn=(21)
+calls=3 2738
+3803 3
+
+fl=(22)
+fn=(24) _int_free
+3940 1
+
+fl=(22)
+fn=(24)
+3991 1
+
+fl=(22)
+fn=(24)
+cfl=(21)
+cfn=(20)
+calls=2 621
+4067 2
+
+fl=(23) /usr/src/debug/glibc-2.17-c758a686/misc/../sysdeps/unix/sysv/linux/usleep.c
+fn=(25) usleep
+cfl=(5)
+cfn=??
+calls=1 81
+32 1
+
+fl=(14)
+fn=(7)
+36 1
+
+fl=(24) /usr/src/debug/glibc-2.17-c758a686/nptl/../nptl/pthread_mutex_lock.c
+fn=(26) __GI___pthread_mutex_lock
+65 1
+
+fl=(24)
+fn=(26)
+cfl=(24)
+cfn=??
+calls=48 168
+78 48
+
+fl=(24)
+fn=??
+cfl=(3)
+cfn=??
+calls=12 133
+168 12
+
+fl=(24)
+fn=??
+cfl=(3)
+cfn=??
+calls=35 135
+168 35
+
+fl=(24)
+fn=??
+cfl=(3)
+cfn=??
+calls=1 138
+168 1
+
+fl=(25) /usr/src/debug/glibc-2.17-c758a686/nptl/../sysdeps/unix/sysv/linux/x86_64/recv.c
+fn=(27) __libc_recv
+33 6
+
+fl=(26) /usr/src/debug/glibc-2.17-c758a686/nptl/../sysdeps/unix/sysv/linux/x86_64/send.c
+fn=(28) __libc_send
+31 3
+
+fl=(27) /usr/src/debug/glibc-2.17-c758a686/nptl/pthread_create.c
+fn=(29) start_thread
+cfl=??
+cfn=(30) efrmain
+calls=1760 0
+307 1760
+
+fl=(27)
+fn=(29)
+cfl=??
+cfn=(31) ebmain
+calls=18 0
+307 18
+
+fl=(28) /usr/src/debug/glibc-2.17-c758a686/nptl/pthread_mutex_unlock.c
+fn=(32) __pthread_mutex_unlock_usercnt
+55 1
+
+fl=(28)
+fn=(32)
+cfl=(28)
+cfn=??
+calls=21 74
+55 21
+
+fl=(28)
+fn=??
+cfl=(3)
+cfn=??
+calls=21 371
+74 21
+
+fl=(29) /usr/src/debug/glibc-2.17-c758a686/nss/nss_files/files-XXX.c
+fn=(33) internal_setent
+cfl=(20)
+cfn=(18)
+calls=1 86
+79 1
+
+fl=(29)
+fn=(34) internal_endent
+cfl=(17)
+cfn=(15)
+calls=1 58
+161 1
+
+fl=(29)
+fn=(35) get_contents
+cfl=(18)
+cfn=(16)
+calls=3 52
+206 3
+
+fl=(12)
+fn=(36) _nss_files_gethostbyname3_r
+cfl=(29)
+cfn=(35)
+calls=2 206
+141 2
+
+fl=(12)
+fn=(36)
+cfl=(29)
+cfn=(35)
+calls=1 206
+168 1
+
+fl=(12)
+fn=(5)
+cfl=(29)
+cfn=(33)
+calls=1 79
+363 1
+
+fl=(12)
+fn=(5)
+cfl=(12)
+cfn=(36)
+calls=2 141
+363 2
+
+fl=(12)
+fn=(5)
+cfl=(12)
+cfn=(36)
+calls=1 168
+363 1
+
+fl=(12)
+fn=(5)
+cfl=(29)
+cfn=(34)
+calls=1 161
+363 1
+
+fl=??
+fn=(31)
+cfl=??
+cfn=(37) daq_close
+calls=3 0
+0 3
+
+fl=??
+fn=(38) lfprintf
+cfl=(2)
+cfn=??
+calls=1 81
+0 1
+
+fl=??
+fn=(39) mktcpsend_tout
+cfl=(10)
+cfn=(3)
+calls=5 134
+0 5
+
+fl=??
+fn=(40) ebblock
+cfl=(26)
+cfn=(28)
+calls=2 31
+0 2
+
+fl=??
+fn=(41) cleanfirst
+0 2
+
+fl=??
+fn=(42) escommand_force
+cfl=??
+cfn=(39)
+calls=1 0
+0 1
+
+fl=??
+fn=(31)
+0 1
+
+fl=??
+fn=(43) escommand
+cfl=??
+cfn=(39)
+calls=4 0
+0 4
+
+fl=??
+fn=(31)
+cfl=??
+cfn=(41)
+calls=3 0
+0 3
+
+fl=??
+fn=(44) daq_stop
+cfl=??
+cfn=(42)
+calls=1 0
+0 1
+
+fl=??
+fn=(30)
+cfl=(7)
+cfn=??
+calls=17 98
+0 17
+
+fl=??
+fn=(43)
+cfl=??
+cfn=(38)
+calls=1 0
+0 1
+
+fl=??
+fn=(45) newevt
+cfl=(22)
+cfn=(22)
+calls=1 2894
+0 1
+
+fl=??
+fn=(46) com_get
+cfl=(26)
+cfn=(28)
+calls=1 31
+0 1
+
+fl=??
+fn=(30)
+cfl=(25)
+cfn=(27)
+calls=5 33
+0 5
+
+fl=??
+fn=(30)
+cfl=(23)
+cfn=(25)
+calls=1 32
+0 1
+
+fl=??
+fn=(45)
+cfl=(8)
+cfn=??
+calls=1 554
+0 1
+
+fl=??
+fn=(31)
+cfl=??
+cfn=(40)
+calls=2 0
+0 2
+
+fl=??
+fn=(31)
+cfl=??
+cfn=(47) mkefts
+calls=2 0
+0 2
+
+fl=??
+fn=(30)
+cfl=(7)
+cfn=??
+calls=1 99
+0 1
+
+fl=??
+fn=(45)
+cfl=(8)
+cfn=??
+calls=1 538
+0 1
+
+fl=??
+fn=(44)
+cfl=??
+cfn=(43)
+calls=1 0
+0 1
+
+fl=??
+fn=(31)
+cfl=(24)
+cfn=(26)
+calls=1 65
+0 1
+
+fl=??
+fn=(31)
+cfl=??
+cfn=(48) cleanall
+calls=1 0
+0 1
+
+fl=??
+fn=(45)
+0 1654
+
+fl=??
+fn=(49) commain
+cfl=??
+cfn=(50) daq_nssta
+calls=2 0
+0 2
+
+fl=??
+fn=(45)
+cfl=(22)
+cfn=(22)
+calls=8 2905
+0 8
+
+fl=??
+fn=(51) storeef
+cfl=??
+cfn=(45)
+calls=1667 0
+0 1667
+
+fl=??
+fn=(49)
+cfl=??
+cfn=(44)
+calls=2 0
+0 2
+
+fl=??
+fn=(31)
+cfl=(24)
+cfn=(26)
+calls=5 78
+0 5
+
+fl=??
+fn=(2)
+cfl=??
+cfn=(49)
+calls=5 0
+0 5
+
+fl=??
+fn=(47)
+cfl=(8)
+cfn=??
+calls=1 2198
+0 1
+
+fl=??
+fn=(50)
+cfl=??
+cfn=(43)
+calls=2 0
+0 2
+
+fl=??
+fn=(37)
+cfl=??
+cfn=(43)
+calls=3 0
+0 3
+
+fl=??
+fn=(51)
+cfl=(28)
+cfn=(32)
+calls=22 55
+0 22
+
+fl=??
+fn=(49)
+cfl=??
+cfn=(46)
+calls=1 0
+0 1
+
+fl=??
+fn=(48)
+cfl=(22)
+cfn=(24)
+calls=1 3991
+0 1
+
+fl=??
+fn=(30)
+cfl=(22)
+cfn=(24)
+calls=2 4067
+0 2
+
+fl=??
+fn=(43)
+cfl=(25)
+cfn=(27)
+calls=1 33
+0 1
+
+fl=??
+fn=(30)
+cfl=(4)
+cfn=??
+calls=2 81
+0 2
+
+fl=??
+fn=(30)
+cfl=??
+cfn=(51)
+calls=1732 0
+0 1732
+
+fl=??
+fn=(51)
+cfl=(24)
+cfn=(26)
+calls=43 78
+0 43
+
+fl=??
+fn=(41)
+cfl=(22)
+cfn=(24)
+calls=1 3940
+0 1
+
+fl=??
+fn=(47)
+cfl=(8)
+cfn=??
+calls=1 1690
+0 1
+
+fl=??
+fn=(45)
+cfl=(22)
+cfn=(22)
+calls=2 2903
+0 2
+

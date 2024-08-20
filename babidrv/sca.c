@@ -1,0 +1,2 @@
+void sca(void){
+}

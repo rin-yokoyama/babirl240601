@@ -1,0 +1,35 @@
+<?xml version=\"1.0\"?>
+<babild>
+ <daqinfo>
+  <runname>test</runname>
+  <runnumber>10</runnumber>
+  <ebsize>16384</ebsize>
+  <efn>4</efm>
+  <babildes>0</babildes>
+  <eflist>
+    <efn>10</efn>
+    <onoff>1</onoff>
+    <host>hoge</host>
+    <name>hogehoge</name>
+  </eflist>
+  <eflist>
+    <efn>11</efn>
+    <onoff>1</onoff>
+    <host>vme</host>
+    <name>vme</name>
+  </eflist>
+  <hdlist>
+    <hdn>0</hdn>
+    <path>/data/exp</path>
+    <onoff>1</onoff>
+  </hdlist>
+ </daqinfo>
+
+ <runinfo>
+  <runname>hoge</runname>
+  <runnumber>15</runnumber>
+  <runstatus>IDLE</runstatus>
+  <startdate>01-Jan-70 09:00:00</startdate>
+  <stopdate>01-Jan-70  10:10:10</stopdate>
+ </runinfo>
+</babild>
