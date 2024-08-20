@@ -1619,6 +1619,8 @@ int daq_close(void)
   }
   if (rk)
   {
+    // Flush final messages
+    rd_kafka_flush(rk, 10 * 1000); // Wait for max 10 seconds
     delete_kafka(rk, topic);
   }
 
