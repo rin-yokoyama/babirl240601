@@ -22,7 +22,7 @@ HUGEBUFF = 1
 #if wsl
 #NOTOUT = 1
 
-CFLAGS = -Wall -O2 -fcommon -I../include -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
+CFLAGS = -Wall -O2 -fcommon -I../include -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -I/usr/include/postgresql
 LDFLAGS =
 
 

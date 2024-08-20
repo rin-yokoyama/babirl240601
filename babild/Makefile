@@ -2,7 +2,7 @@ ALL : babild
 
 include ../common.mk
 BABILIB = ../lib/libbabirl.a
-LOADLIBES = ${BABILIB}  -lpthread -lexpat
+LOADLIBES = ${BABILIB}  -lpthread -lexpat -lrdkafka
 # -lprofiler
 
 
