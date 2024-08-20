@@ -32,6 +32,8 @@
 #include "babicon.h"
 #include "comfuncs.c"
 
+#include "../babild/contains_colon.h"
+
 int getscrdata(int);
 
 int chkex(int ex, char *mes){
@@ -682,7 +684,12 @@ int sethdlist(char *arg){
 	sock = ebcon(ebhostname);
 	ret = eb_set(sock, EB_CHK_DIR, hdp, strlen(hdp)+1);
 	close(sock);
-	if(!ret){
+	if(contains_colon(hdp))
+	{
+	  printf("Kafka-server %s\n", hdp);
+	  pathc = 2;
+	}
+	else if(!ret){
 	  printf("Can't open dir %s\n", hdp);
 	  fl = 0;
 	}else{
@@ -715,7 +722,7 @@ int sethdlist(char *arg){
 	er = 0;
       }
     }else if(pathc){
-      daqinfo.hdlist[hdn].ex = 1;
+      daqinfo.hdlist[hdn].ex = pathc;
       strncpy(daqinfo.hdlist[hdn].path, hdp,
 	      sizeof(daqinfo.hdlist[hdn].path));
     }else if(dlc){

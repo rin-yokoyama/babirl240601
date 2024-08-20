@@ -1,19 +1,5 @@
 #include <librdkafka/rdkafka.h>
 
-int contains_colon(const char str[])
-{
-    int i = 0;
-    while (str[i] != '\0')
-    {
-        if (str[i] == ':')
-        {
-            return 1; // Return true if colon is found
-        }
-        i++;
-    }
-    return 0; // Return false if no colon is found
-}
-
 void init_kafka_producer(rd_kafka_t *rk, rd_kafka_topic_t *topic, const char client_id[], const char bootstrap_servers[], const char topic_names[])
 {
     char errstr[512];

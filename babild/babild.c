@@ -40,6 +40,7 @@
 #include "ebstrcom.h"
 
 #include "kafka.h"
+#include "contains_colon.h"
 
 int chkopt(int, char *[]);
 void quit(void);
@@ -2077,8 +2078,7 @@ int commain(void)
       break;
     case EB_SET_ENDER:
       // DB(printf("babild: EB_SET_ENDER\n"));
-      if (runinfo.runstat == STAT_RUN_WAITSTOP)
-      {
+      if (runinfo.runstat == STAT_RUN_WAITSTOP) {
         com_set(sock, buff, runinfo.ender, len);
         DB(printf("ender = %s\n", runinfo.ender));
       }
