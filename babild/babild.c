@@ -846,7 +846,44 @@ int ebblock(void)
     }
     if (rk)
     {
-      kafka_produce(topic, 2 * bsz, ebbuf.data);
+      if (totsize)
+      {
+        kafka_produce(topic, 2 * bsz, ebbuf.data);
+      }
+      else
+      {
+        // Send header messages to all the partitions so all the pararell decoder processes receives runinfo.
+        // Get the number of partitions for the topic
+        const rd_kafka_metadata_t *metadata;
+        if (rd_kafka_metadata(rk, 0, topic, &metadata, 5000) != RD_KAFKA_RESP_ERR_NO_ERROR)
+        {
+          printf("Failed to fetch metadata\n");
+          return;
+        }
+
+        int partition_count = metadata->topics[0].partition_cnt;
+        printf("Number of partitions: %d", partition_count);
+
+        for (int i = 0; i < partition_count; ++i)
+        {
+          if (rd_kafka_produce(
+                  topic, i,
+                  RD_KAFKA_MSG_F_COPY,
+                  ebbuf.data, bsz * 2,
+                  NULL, 0,
+                  NULL) == -1)
+          {
+            printf("Failed to produce message to partition %d\n", i);
+          }
+          else
+          {
+            printf("Produced message to partition %d\n", i);
+          }
+        }
+        // Wait for all messages to be delivered
+        printf("Flushing header messages...");
+        rd_kafka_flush(rk, 10 * 1000); // Wait for max 10 seconds
+      }
     }
   }
 
@@ -2078,7 +2115,8 @@ int commain(void)
       break;
     case EB_SET_ENDER:
       // DB(printf("babild: EB_SET_ENDER\n"));
-      if (runinfo.runstat == STAT_RUN_WAITSTOP) {
+      if (runinfo.runstat == STAT_RUN_WAITSTOP)
+      {
         com_set(sock, buff, runinfo.ender, len);
         DB(printf("ender = %s\n", runinfo.ender));
       }
