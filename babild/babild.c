@@ -689,6 +689,40 @@ int mkcomment(int mode)
         // flock(fileno(hdfd[i]), LOCK_UN);
       }
     }
+    if (rk)
+    {
+        // Send header messages to all the partitions so all the pararell decoder processes receives runinfo.
+        // Get the number of partitions for the topic
+        const rd_kafka_metadata_t *metadata;
+        if (rd_kafka_metadata(rk, 0, topic, &metadata, 5000) != RD_KAFKA_RESP_ERR_NO_ERROR)
+        {
+  	  lfprintf(lfd, "Failed to fetch metadata\n");
+          return;
+        }
+
+        int partition_count = metadata->topics[0].partition_cnt;
+  	lfprintf(lfd, "Number of partitions: %d\n", partition_count);
+
+        for (int i = 0; i < partition_count; ++i)
+        {
+          if (rd_kafka_produce(
+                  topic, i,
+                  RD_KAFKA_MSG_F_COPY,
+                  commentbuff, idx,
+                  NULL, 0,
+                  NULL) == -1)
+          {
+  	    lfprintf(lfd, "Failed to produce message to partition %d\n", i);
+          }
+          else
+          {
+  	    lfprintf(lfd, "Produced message to partition %d\n", i);
+          }
+        }
+        // Wait for all messages to be delivered
+  	lfprintf(lfd, "Flushing message...\n");
+        rd_kafka_flush(rk, 10 * 1000); // Wait for max 10 seconds
+    }
 
     tinhd[0] = EARECV_DATA;
     tinhd[1] = idx;
@@ -812,6 +846,7 @@ int ebblock(void)
   RIDFHDBLKN blknhd;
   unsigned long long int ngig;
 
+  lfprintf(lfd, "ebblock()\n");
   sz = sizeof(blknhd) / WORDSIZE;
   pt = sizeof(RIDFHD);
   blknhd = ridf_mkhd_blkn(RIDF_LY1, RIDF_BLOCK_NUMBER, sz, daqinfo.efn, blkn);
@@ -835,6 +870,7 @@ int ebblock(void)
   /* Store data to storage */
   if (runinfo.runstat == STAT_RUN_START)
   {
+    lfprintf(lfd, "runstat START: rk %d\n", rk);
     for (i = 0; i < MAXHD; i++)
     {
       if (mxfd[i])
@@ -846,44 +882,8 @@ int ebblock(void)
     }
     if (rk)
     {
-      if (totsize)
-      {
         kafka_produce(topic, 2 * bsz, ebbuf.data);
-      }
-      else
-      {
-        // Send header messages to all the partitions so all the pararell decoder processes receives runinfo.
-        // Get the number of partitions for the topic
-        const rd_kafka_metadata_t *metadata;
-        if (rd_kafka_metadata(rk, 0, topic, &metadata, 5000) != RD_KAFKA_RESP_ERR_NO_ERROR)
-        {
-          printf("Failed to fetch metadata\n");
-          return;
-        }
-
-        int partition_count = metadata->topics[0].partition_cnt;
-        printf("Number of partitions: %d", partition_count);
-
-        for (int i = 0; i < partition_count; ++i)
-        {
-          if (rd_kafka_produce(
-                  topic, i,
-                  RD_KAFKA_MSG_F_COPY,
-                  ebbuf.data, bsz * 2,
-                  NULL, 0,
-                  NULL) == -1)
-          {
-            printf("Failed to produce message to partition %d\n", i);
-          }
-          else
-          {
-            printf("Produced message to partition %d\n", i);
-          }
-        }
-        // Wait for all messages to be delivered
-        printf("Flushing header messages...");
-        rd_kafka_flush(rk, 10 * 1000); // Wait for max 10 seconds
-      }
+  	lfprintf(lfd, "sent data to kafka server\n");
     }
   }
 
@@ -1460,6 +1460,7 @@ int daq_start()
   time_t now;
   struct tm *stm;
 
+  printf("daq_start()");
   tgign = 0;
   daqinfo.runnumber++;
   runinfo.runnumber = daqinfo.runnumber;
@@ -1487,15 +1488,16 @@ int daq_start()
   {
     if (daqinfo.hdlist[i].ex && daqinfo.hdlist[i].of)
     {
-      if (daqinfo.hdlist[i].ex == 2)
+      if (contains_colon(daqinfo.hdlist[i].path))
       {
-        if (!rk)
-          delete_kafka(rk, topic);
+        if (rk)
+          delete_kafka(&rk, &topic);
         char efn[4];
         char topicName[128];
         sprintf(efn, "%d", daqinfo.efn);
         sprintf(topicName, "ridf-%d", daqinfo.efn);
-        init_kafka_producer(rk, topic, efn, daqinfo.hdlist[i].path, topicName);
+	printf("Kafka server %s", daqinfo.hdlist[i].path);
+        init_kafka_producer(&rk, &topic, efn, daqinfo.hdlist[i].path, topicName);
         mxfd[i] = NULL;
       }
       else
@@ -1659,7 +1661,7 @@ int daq_close(void)
   {
     // Flush final messages
     rd_kafka_flush(rk, 10 * 1000); // Wait for max 10 seconds
-    delete_kafka(rk, topic);
+    delete_kafka(&rk, &topic);
   }
 
   inhd[0] = EARECV_RUNINFO;
